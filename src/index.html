@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Athena</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h1 class="logo">ATHENA</h1>
+      <nav>
+        <button data-page="dashboard">Dashboard</button>
+        <button data-page="projects">Projetos</button>
+        <button data-page="areas">Áreas</button>
+        <button data-page="resources">Recursos</button>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <!-- Dashboard -->
+      <section id="dashboard" class="page active">
+        <h2>Dashboard</h2>
+        <div class="cards">
+          <div class="card">Total de Projetos: 3</div>
+          <div class="card">Áreas Ativas: 5</div>
+          <div class="card">Recursos Usados: 12</div>
+        </div>
+      </section>
+
+      <!-- Projetos -->
+      <section id="projects" class="page">
+        <h2>Projetos</h2>
+        <p>Em breve: lista de projetos aqui.</p>
+      </section>
+
+      <!-- Áreas -->
+      <section id="areas" class="page">
+        <h2>Áreas</h2>
+        <p>Em breve: lista de áreas aqui.</p>
+      </section>
+
+      <!-- Recursos -->
+      <section id="resources" class="page">
+        <h2>Recursos</h2>
+        <p>Em breve: lista de recursos aqui.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

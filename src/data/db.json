@@ -1,0 +1,38 @@
+{
+    "projetos": [
+      {
+        "id": 1,
+        "nome": "Athena Core",
+        "descricao": "Sistema central de gestão de conhecimento.",
+        "areas": [1, 2],
+        "recursos": [1, 2]
+      }
+    ],
+    "areas": [
+      {
+        "id": 1,
+        "nome": "Pesquisa",
+        "descricao": "Área destinada à pesquisa e desenvolvimento."
+      },
+      {
+        "id": 2,
+        "nome": "Documentação",
+        "descricao": "Organização de arquivos e processos."
+      }
+    ],
+    "recursos": [
+      {
+        "id": 1,
+        "tipo": "PDF",
+        "titulo": "Manual do Sistema",
+        "url": "manual.pdf"
+      },
+      {
+        "id": 2,
+        "tipo": "Link",
+        "titulo": "Base de Conhecimento",
+        "url": "https://exemplo.com/knowledge-base"
+      }
+    ]
+  }
+  

@@ -145,10 +145,45 @@
         opacity: 0.9;
       }
 
+            /* Preloader */
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #d1d1d1; /* fundo combinando com o app */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 6px solid #ccc;
+        border-top-color: #4a81a8;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      /* Animação de rotação */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- Loader -->
+    <div id="preloader">
+      <div class="spinner"></div>
+    </div>
+
     <!-- Banner -->
     <div class="banner">
       <h1>Athena</h1>
@@ -212,7 +247,7 @@
 
 
       <!-- Faixa decorativa acima da Inbox -->
-<div style="background-color: rgba(74, 129, 168, 0.14); height: 40px;"></div>
+<div style="background-color: rgba(74, 129, 168, 0.14); height: 40px;"  data-aos="fade-up" data-aos-delay="500" ></div>
 
   <!-- Inbox Section -->
   <div class="container mt-4">
@@ -287,6 +322,18 @@
     <script>
       AOS.init();
     </script>
+
+    <!-- Custom JS for preloader -->
+    <script>
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+          preloader.style.display = "none";
+        }, 500);
+      });
+    </script>
+
 
   </body>
 </html>

@@ -11,8 +11,11 @@
     "windows": [
       {
         "title": "athena",
+        "minWidth": 1024,
+        "minHeight": 768,
         "width": 1280,
-        "height": 720
+        "height": 720,
+        "resizable": true
       }
     ],
     "security": {

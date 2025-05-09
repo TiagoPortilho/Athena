@@ -1,15 +1,57 @@
 {
-  "name": "athena",
-  "private": true,
+  "name": "athena-electron",
   "version": "0.1.0",
-  "type": "module",
+  "description": "Athena – seu Second‑Brain em Electron + SQLite",
+  "main": "main.js",
   "scripts": {
-    "tauri": "tauri"
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "electron-builder"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TiagoPortilho/Athena.git"
+  },
+  "keywords": [
+    "electron",
+    "sqlite",
+    "tauri-migration",
+    "second-brain"
+  ],
+  "author": "Tiago Portilho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TiagoPortilho/Athena/issues"
+  },
+  "homepage": "https://github.com/TiagoPortilho/Athena#readme",
   "devDependencies": {
-    "@tauri-apps/cli": "^2"
+    "electron": "^36.2.0",
+    "electron-builder": "^26.0.12",
+    "electron-rebuild": "^3.2.9"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.5.0"
+    "better-sqlite3": "^11.10.0"
+  },
+  "build": {
+    "appId": "com.tiagoportilho.athena",
+    "productName": "Athena",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   }
 }

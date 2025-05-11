@@ -158,6 +158,50 @@ async function loadRecentEvents() {
     .join('');
 }
 
+// Função para carregar notas recentes
+async function loadRecentNotes() {
+  const notesList = document.getElementById('recentNotes');
+  if (!notesList) return;
+
+  const notes = await window.api.listNotes();
+  
+  if (notes.length === 0) {
+    notesList.innerHTML = `
+      <div class="empty-inbox">
+        <img src="https://c.animaapp.com/maelovkf66QMPN/img/edit.svg" class="empty-icon">
+        <h4>No notes yet</h4>
+        <p>Start capturing your thoughts by creating your first note</p>
+        <a href="notes.html" class="btn-create-first">
+          Create Note
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  const recentNotes = notes
+    .sort((a, b) => b.created - a.created)
+    .slice(0, 4);
+
+  notesList.innerHTML = recentNotes
+    .map(note => `
+      <li class="list-group-item">
+        <div class="project-item-left">
+          <img src="https://c.animaapp.com/maelovkf66QMPN/img/edit.svg" class="project-icon"/>
+          <div class="project-info">
+            <div class="project-name">${note.title}</div>
+            <div class="project-date">Created: ${new Date(note.created * 1000).toLocaleDateString()}</div>
+          </div>
+        </div>
+        <span class="project-status">Note</span>
+      </li>
+    `)
+    .join('');
+}
+
 function getDaysLeft(dueDate) {
   if (!dueDate) return "No date";
   const today = new Date();
@@ -191,8 +235,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Load recent projects, tasks, and events
+  // Load recent projects, tasks, events, and notes
   loadRecentProjects();
   loadRecentTasks();
   loadRecentEvents();
+  loadRecentNotes();
 });

@@ -17,4 +17,9 @@ contextBridge.exposeInMainWorld('api', {
   listEvents: () => ipcRenderer.invoke('list-events'),
   updateEvent: (data) => ipcRenderer.invoke('update-event', data),
   deleteEvent: (id) => ipcRenderer.invoke('delete-event', id),
+  // Notes CRUD
+  createNote: (data) => ipcRenderer.invoke('create-note', data),
+  listNotes: () => ipcRenderer.invoke('list-notes'),
+  updateNote: (data) => ipcRenderer.invoke('update-note', data),
+  deleteNote: (id) => ipcRenderer.invoke('delete-note', id),
 });

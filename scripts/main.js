@@ -43,6 +43,12 @@ function initDb() {
       color       TEXT,
       created     INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS notes (
+      id    INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      text  TEXT NOT NULL,
+      created INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -151,4 +157,31 @@ ipcMain.handle('update-event', (e, { id, title, description, date, color }) => {
 
 ipcMain.handle('delete-event', (e, id) => {
   db.prepare('DELETE FROM events WHERE id = ?').run(id);
+});
+
+// NOTAS CRUD
+ipcMain.handle('create-note', (e, { title, text }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO notes (title, text, created)
+    VALUES (?, ?, ?)
+  `);
+  const info = stmt.run(title, text, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('list-notes', () => {
+  return db.prepare('SELECT * FROM notes ORDER BY created DESC').all();
+});
+
+ipcMain.handle('update-note', (e, { id, title, text }) => {
+  db.prepare(`
+    UPDATE notes
+    SET title = ?, text = ?
+    WHERE id = ?
+  `).run(title, text, id);
+});
+
+ipcMain.handle('delete-note', (e, id) => {
+  db.prepare('DELETE FROM notes WHERE id = ?').run(id);
 });

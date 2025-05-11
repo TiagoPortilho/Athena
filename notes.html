@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Athena - Notes</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/notes-styles.css" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <!-- Banner -->
+    <div class="banner"><h1>Athena</h1></div>
+
+    <!-- Subtitle -->
+    <div class="container mt-4">
+      <div class="subtitle">Your Notes</div>
+      <div class="description" id="subtitle-description">| This is where you create and manage your notes.</div>
+      <button id="btnBack" class="btn-back" onclick="window.location.href='index.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Home
+      </button>
+    </div>
+
+    <div style="background-color: rgba(59, 59, 59, 0.39); height: 5px; margin-top: 40px; margin-bottom: 80px;"></div>
+
+    <!-- Notas -->
+    <div class="container mt-5" id="notescontainer">
+      <div class="position-relative">
+        <button id="btnNewNote" class="btn btn-outline-primary"></button>
+        <div id="notesGrid" class="row g-4 mt-4"></div>
+      </div>
+      <!-- Modal Nova/Editar Nota -->
+      <div class="modal fade" id="noteModal" tabindex="-1" aria-labelledby="noteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content p-3">
+            <div class="modal-header">
+              <h5 class="modal-title" id="noteModalLabel">New Note</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <form id="noteForm">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="noteTitle" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="noteTitle" required />
+                </div>
+                <div class="mb-3">
+                  <label for="noteText" class="form-label">Text</label>
+                  <textarea class="form-control" id="noteText" rows="6" required></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary w-100" id="saveNoteButton">Save Note</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Detalhes Nota -->
+      <div class="modal fade" id="noteDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title note-title"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="note-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background-color: rgba(74, 129, 168, 0.14); height: 40px; margin-top: 40px;"></div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CRUD integrado -->
+    <script src="scripts/notes-crud.js"></script>
+
+    <!-- Preloader -->
+    <script src="scripts/loader.js"></script>
+  </body>
+</html>

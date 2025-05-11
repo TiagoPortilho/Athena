@@ -11,10 +11,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/projects-styles.css" />
 
     <style>
-            html {
+      html {
         scroll-behavior: smooth;
       }
       body {
@@ -22,199 +22,8 @@
         font-family: "Zen Kurenaido", sans-serif;
         overflow-x: hidden;
       }
-
-
-      .banner {
-        background-image: url("assets/images/Banner.png");
-        background-size: cover;
-        background-position: center ;
-        width: 100vw;
-        min-height: 600px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-
-      .banner h1 {
-        font-family: "Megrim", sans-serif;
-        color: #0b558a;
-        font-size: 96px;
-      }
-
-      .subtitle {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 50px;
-        color: #394450;
-      }
-
-      .description {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 25px;
-        color: #4a81a8;
-      }
-
-      .card{
-        background-color: #d1d1d1;
-        border-radius: 10px;
-        border: 0px;
-      }
-
-      .card-title {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 23px;
-        margin-left: 0px;
-        padding-top: 7px;
-        padding-left: 0px;
-        color: #394450;
-      }
-
-      .card-body{
-        background-color: #d1d1d1;
-        padding-left: 0px;
-      }
-      .card-img-top {
-        border-radius: 10px;
-        height: auto;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-      }
-
-      .card-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 5px;
-      }
-
-      .section {
-        margin-top: 40px;
-      }
-
-      
-      #inboxTabsContent {
-        background-color: #f6f6f6;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        font-size: 18px; /* aumento geral */
-      }
-
-      
-      .nav-tabs .nav-link {
-        font-size: 18px;
-        color: #4a81a8;
-        border: none;
-      }
-      .nav-tabs .nav-link.active {
-        background-color: rgba(74, 129, 168, 0.14);
-        border-radius: 8px 8px 0 0;
-        color: #394450;
-        font-weight: bold;
-      }
-
-      h2 {
-        font-size: 36px !important;
-      }
-
-      /* Itens da lista */
-      .list-group-item {
-        font-size: 18px;
-        border: none;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        background-color: #eaeaea;
-        transition: background-color 0.2s ease;
-      }
-      .list-group-item:hover {
-        background-color: #dcdcdc;
-      }
-
-
-      .badge {
-        font-size: 14px; 
-        padding: 6px 14px;
-        background-color: #4a81a8 !important;
-        opacity: 0.9;
-      }
-
-            /* Preloader */
-      #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #d1d1d1; /* fundo combinando com o app */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-      }
-
-      .spinner {
-        width: 60px;
-        height: 60px;
-        border: 6px solid #ccc;
-        border-top-color: #4a81a8;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      /* Animação de rotação */
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .project-card {
-        border-radius: 12px;
-        background-color: #ffffff;
-        padding: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
-      }
-
-      .project-card:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      }
-
-      .project-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-        color: #394450;
-      }
-
-      .project-meta {
-        font-size: 0.9rem;
-        color: #6c757d;
-      }
-
-      .progress {
-        height: 8px;
-        background-color: #e9ecef;
-        border-radius: 4px;
-        margin-top: 8px;
-        margin-bottom: 6px;
-      }
-
-      .status-badge {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-        border-radius: 12px;
-        background-color: #dbeafe;
-        color: #2563eb;
-        display: inline-block;
-      }
-
-
     </style>
   </head>
-
   <body>
     <!-- Loader -->
     <div id="preloader"><div class="spinner"></div></div>
@@ -228,32 +37,28 @@
       <div class="description">| this is where you manage and create your projects.</div>
     </div>
 
-    <div class="container mt-5">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="subtitle">Projects</h2>
-        <button id="btnNew" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
-          + Novo Projeto
-        </button>
-      </div>
-      <div id="projectGrid" class="row g-4"></div>
-    </div>
-
     <!-- Modal Novo Projeto -->
+    <div class="container mt-5" id="projectscontainer">
+      <div class="position-relative">
+        <button id="btnNew" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
+        </button>
+        <div id="projectGrid" class="row g-4 mt-4"></div>
+      </div>
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content p-3">
           <div class="modal-header">
-            <h5 class="modal-title" id="projectModalLabel">Novo Projeto</h5>
+            <h5 class="modal-title" id="projectModalLabel">New Project</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
           </div>
           <form id="projectForm">
             <div class="modal-body">
               <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
+                <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" required />
               </div>
               <div class="mb-3">
-                <label for="description" class="form-label">Descrição</label>
+                <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" rows="2" required></textarea>
               </div>
               <div class="mb-3">
@@ -266,113 +71,38 @@
               </div>
               <div class="row">
                 <div class="col mb-3">
-                  <label for="start_date" class="form-label">Início</label>
+                  <label for="start_date" class="form-label">Start</label>
                   <input type="date" class="form-control" id="start_date" required />
                 </div>
                 <div class="col mb-3">
-                  <label for="end_date" class="form-label">Término</label>
+                  <label for="end_date" class="form-label">End</label>
                   <input type="date" class="form-control" id="end_date" required />
                 </div>
               </div>
               <div class="mb-3">
-                <label for="priority" class="form-label">Prioridade</label>
+                <label for="priority" class="form-label">Priority</label>
                 <select class="form-select" id="priority">
-                  <option value="baixa">Baixa</option>
-                  <option value="média">Média</option>
-                  <option value="alta">Alta</option>
+                  <option value="baixa">Low</option>
+                  <option value="média">Normal</option>
+                  <option value="alta">High</option>
                 </select>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary w-100">Salvar Projeto</button>
+              <button type="submit" class="btn btn-primary w-100">Save Project</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-
+</div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- CRUD integrado -->
-    <script>
-      const grid = document.getElementById("projectGrid");
-      const form = document.getElementById("projectForm");
-      const modal = new bootstrap.Modal(document.getElementById("projectModal"));
-      const modalTitle = document.getElementById("projectModalLabel");
-      let editingId = null;
-
-      async function loadProjects() {
-        grid.innerHTML = "";
-        const list = await window.api.listProjects();
-        list.forEach(p => {
-          const card = document.createElement("div");
-          card.className = "col-md-4";
-          card.innerHTML = `
-            <div class="project-card p-3">
-              <div class="project-title">${p.title}</div>
-              <div class="project-meta">${p.status}</div>
-              <div class="project-meta">${p.priority || ""}</div>
-              <small>${new Date(p.created * 1000).toLocaleDateString()}</small>
-              <div class="mt-2 d-flex justify-content-end">
-                <button class="btn btn-sm btn-outline-secondary edit">Editar</button>
-                <button class="btn btn-sm btn-outline-danger ms-2 del">Excluir</button>
-              </div>
-            </div>`;
-          card.querySelector(".edit").onclick = () => openForm(p);
-          card.querySelector(".del").onclick = async () => {
-            if (confirm("Excluir este projeto?")) {
-              await window.api.deleteProject(p.id);
-              loadProjects();
-            }
-          };
-          grid.appendChild(card);
-        });
-      }
-
-      function openForm(p = {}) {
-        editingId = p.id || null;
-        modalTitle.textContent = editingId ? "Editar Projeto" : "Novo Projeto";
-        form.name.value = p.title || "";
-        form.description.value = p.description || "";
-        form.status.value = p.status || "not started";
-        form.start_date.value = p.start_date || "";
-        form.end_date.value = p.end_date || "";
-        form.priority.value = p.priority || "baixa";
-        modal.show();
-      }
-
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        const data = {
-          title: form.name.value,
-          description: form.description.value,
-          status: form.status.value,
-          start_date: form.start_date.value,
-          end_date: form.end_date.value,
-          priority: form.priority.value
-        };
-        if (editingId) {
-          await window.api.updateProject({ id: editingId, ...data });
-        } else {
-          await window.api.createProject(data);
-        }
-        modal.hide();
-        loadProjects();
-      });
-
-      document.getElementById("btnNew").onclick = () => openForm();
-      window.addEventListener("DOMContentLoaded", loadProjects);
-    </script>
+    <script src="scripts/projects-crud.js"></script>
 
     <!-- Preloader -->
-    <script>
-      window.addEventListener("load", () => {
-        document.getElementById("preloader").style.opacity = "0";
-        setTimeout(() => {
-          document.getElementById("preloader").style.display = "none";
-        }, 500);
-      });
-    </script>
+    <script src="scripts/loader.js"></script>
   </body>
 </html>

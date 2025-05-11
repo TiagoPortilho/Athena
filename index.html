@@ -13,8 +13,7 @@
       rel="stylesheet"
     />
     
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/index-styles.css" />
     
     <style>
       html {
@@ -25,159 +24,6 @@
         font-family: "Zen Kurenaido", sans-serif;
         overflow-x: hidden;
       }
-
-
-      .banner {
-        background-image: url("assets/images/Banner.png");
-        background-size: cover;
-        background-position: center ;
-        width: 100vw;
-        min-height: 600px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-
-      .banner h1 {
-        font-family: "Megrim", sans-serif;
-        color: #0b558a;
-        font-size: 96px;
-      }
-
-      .subtitle {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 50px;
-        color: #394450;
-      }
-
-      .description {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 25px;
-        color: #4a81a8;
-      }
-
-      .card{
-        background-color: #d1d1d1;
-        border-radius: 10px;
-        border: 0px;
-      }
-
-      .card-title {
-        font-family: "Zen Kurenaido", sans-serif;
-        font-size: 23px;
-        margin-left: 0px;
-        padding-top: 7px;
-        padding-left: 0px;
-        color: #394450;
-      }
-
-      .card-body{
-        background-color: #d1d1d1;
-        padding-left: 0px;
-      }
-      .card-img-top {
-        border-radius: 10px;
-        height: auto;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-      }
-
-      .card-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 5px;
-      }
-
-      .section {
-        margin-top: 40px;
-      }
-
-      
-      #inboxTabsContent {
-        background-color: #f6f6f6;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        font-size: 18px; /* aumento geral */
-      }
-
-      
-      .nav-tabs .nav-link {
-        font-size: 18px;
-        color: #4a81a8;
-        border: none;
-      }
-      .nav-tabs .nav-link.active {
-        background-color: rgba(74, 129, 168, 0.14);
-        border-radius: 8px 8px 0 0;
-        color: #394450;
-        font-weight: bold;
-      }
-
-      h2 {
-        font-size: 36px !important;
-      }
-
-      /* Itens da lista */
-      .list-group-item {
-        font-size: 18px;
-        border: none;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        background-color: #eaeaea;
-        transition: background-color 0.2s ease;
-      }
-      .list-group-item:hover {
-        background-color: #dcdcdc;
-      }
-
-
-      .badge {
-        font-size: 14px; 
-        padding: 6px 14px;
-        background-color: #4a81a8 !important;
-        opacity: 0.9;
-      }
-
-            /* Preloader */
-      #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #d1d1d1; /* fundo combinando com o app */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-      }
-
-      .spinner {
-        width: 60px;
-        height: 60px;
-        border: 6px solid #ccc;
-        border-top-color: #4a81a8;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      /* Animação de rotação */
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      a:hover {
-        color: #0b558a !important; /* Change to a different color on hover */
-        transition: color 0.3s ease !important; /* Smooth transition effect */
-      }
-      
     </style>
   </head>
 
@@ -334,21 +180,10 @@
   <!-- Faixa decorativa inferior -->
   <div style="background-color: rgba(74, 129, 168, 0.14); height: 40px; margin-top: 40px;"></div>
 
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS for preloader -->
-    <script>
-      window.addEventListener("load", () => {
-        const preloader = document.getElementById("preloader");
-        preloader.style.opacity = "0";
-        setTimeout(() => {
-          preloader.style.display = "none";
-        }, 500);
-      });
-    </script>
-
-
+    <script src="scripts/loader.js"></script>
   </body>
 </html>

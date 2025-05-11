@@ -57,7 +57,6 @@ app.whenReady().then(() => {
   createWindow();
 });
 
-// 📥 Handlers CRUD via IPC
 ipcMain.handle('create-project', (e, { title, description, status, start_date, end_date, priority }) => {
   const now = Math.floor(Date.now() / 1000);
   const stmt = db.prepare(`

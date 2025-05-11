@@ -28,6 +28,13 @@ function initDb() {
       priority    TEXT,
       created     INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS tasks (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      description TEXT NOT NULL,
+      done        INTEGER NOT NULL DEFAULT 0,
+      due_date    TEXT,
+      created     INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -82,4 +89,31 @@ ipcMain.handle('update-project', (e, { id, title, description, status, start_dat
 
 ipcMain.handle('delete-project', (e, id) => {
   db.prepare('DELETE FROM projects WHERE id = ?').run(id);
+});
+
+// TASKS CRUD
+ipcMain.handle('create-task', (e, { description, due_date }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO tasks (description, due_date, created)
+    VALUES (?, ?, ?)
+  `);
+  const info = stmt.run(description, due_date, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('list-tasks', () => {
+  return db.prepare('SELECT * FROM tasks ORDER BY done ASC, due_date ASC').all();
+});
+
+ipcMain.handle('update-task', (e, { id, description, due_date, done }) => {
+  db.prepare(`
+    UPDATE tasks
+    SET description = ?, due_date = ?, done = ?
+    WHERE id = ?
+  `).run(description, due_date, done ? 1 : 0, id);
+});
+
+ipcMain.handle('delete-task', (e, id) => {
+  db.prepare('DELETE FROM tasks WHERE id = ?').run(id);
 });

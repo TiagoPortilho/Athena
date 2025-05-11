@@ -7,4 +7,9 @@ contextBridge.exposeInMainWorld('api', {
   listProjects: ()  => ipcRenderer.invoke('list-projects'),
   updateProject: (data) => ipcRenderer.invoke('update-project', data),
   deleteProject: (id)   => ipcRenderer.invoke('delete-project', id),
+  // Tasks CRUD
+  createTask: (data) => ipcRenderer.invoke('create-task', data),
+  listTasks: () => ipcRenderer.invoke('list-tasks'),
+  updateTask: (data) => ipcRenderer.invoke('update-task', data),
+  deleteTask: (id) => ipcRenderer.invoke('delete-task', id),
 });

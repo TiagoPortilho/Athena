@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Athena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/tasks-styles.css" />
+  <style>
+    .banner {
+      background-image: url("assets/images/Banner.png");
+      background-size: cover;
+      background-position: center;
+      width: 100vw;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .banner h1 {
+      font-family: "Megrim", sans-serif;
+      color: #0b558a;
+      font-size: 96px;
+    }
+    @media (max-width: 700px) {
+      .banner { min-height: 200px; }
+      .banner h1 { font-size: 48px; }
+    }
+    body {
+      background-color: #d1d1d1;
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader"><div class="spinner"></div></div>
+  <div class="banner"><h1>Athena</h1></div>
+  <div class="container mt-4" style="margin-top: 60px !important;">
+    <div class="subtitle">Your Tasks</div>
+    <div class="description">| Organize and track your daily tasks.</div>
+    <button id="btnBack" class="btn-back" onclick="window.location.href='index.html'">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </button>
+  </div>
+  <div style="background-color: rgba(59, 59, 59, 0.39); height: 5px; margin-top: 40px; margin-bottom: 40px;"></div>
+  <div class="container mt-4" id="tasksContainer">
+    <!-- Header que será controlado via JS -->
+    <div class="tasks-header" style="display: none;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 style="font-size: 2rem;">Tasks</h2>
+        <button class="btn btn-outline-primary" id="btnNewTask">+ New Task</button>
+      </div>
+    </div>
+    <div id="tasksList" class="list-group"></div>
+  </div>
+  <!-- Modal Nova/Editar Task -->
+  <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskModalLabel">New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <form id="taskForm">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="due_date" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="due_date" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary w-100" id="saveTaskBtn">Save Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/tasks-crud.js"></script>
+  <script src="scripts/loader.js"></script>
+</body>
+</html>

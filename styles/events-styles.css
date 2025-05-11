@@ -1,0 +1,359 @@
+/* Estilos base */
+body {
+  background-color: #d1d1d1;
+  font-family: "Zen Kurenaido", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Banner e elementos de cabeçalho */
+.banner {
+  background-image: url("../assets/images/Banner.png");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner h1 {
+  font-family: "Megrim", sans-serif;
+  color: #0b558a;
+  font-size: 96px;
+}
+
+.subtitle {
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 50px;
+  color: #394450;
+}
+
+.description {
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 25px;
+  color: #4a81a8;
+}
+
+/* Botões e controles */
+.btn-back {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+  color: #1e1e1e;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.btn-back:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary {
+  border-radius: 24px;
+  color: #6c757d;
+  border-color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3a6d8a;
+  color: white;
+  border-color: #3a6d8a;
+  box-shadow: 0 4px 8px rgba(58, 109, 138, 0.4);
+}
+
+.btn-calendar {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+  color: #1e1e1e;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.btn-calendar:hover, .btn-calendar:active {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(74, 129, 168, 0.2);
+  background-color: #4a81a8;
+  color: white;
+  border-color: #4a81a8;
+}
+
+.btn-calendar:hover svg, .btn-calendar:active svg {
+  stroke: white;
+}
+
+/* Container e lista de eventos */
+#eventsContainer {
+  min-height: 400px;
+  margin-bottom: 100px;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+  background: #f1f3f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.event-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.event-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #394450;
+  margin: 0;
+}
+
+.event-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.event-description {
+  color: #6c757d;
+  font-size: 14px;
+  margin: 0;
+}
+
+.event-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit, .btn-delete {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  color: #4a81a8;
+  background: rgba(74, 129, 168, 0.1);
+  border: none;
+}
+
+.btn-delete {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  border: none;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+  transform: translateY(-1px);
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(74, 129, 168, 0.2);
+  border-radius: 10px;
+  color: #4a81a8;
+  background: transparent;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn-action svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.btn-action:hover {
+  background: rgba(74, 129, 168, 0.1);
+  transform: translateY(-2px);
+  border-color: #4a81a8;
+}
+
+.btn-action.del-event {
+  color: #ef476f;
+  border-color: rgba(239, 71, 111, 0.2);
+}
+
+.btn-action.del-event:hover {
+  background: rgba(239, 71, 111, 0.1);
+  border-color: #ef476f;
+}
+
+/* Modal styling */
+#eventModal .modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding: 24px;
+}
+
+#eventModal .modal-header {
+  border: none;
+  padding: 0 0 16px 0;
+}
+
+#eventModal .modal-title {
+  font-size: 24px;
+  color: #394450;
+}
+
+#eventModal .btn-close {
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+#eventModal .btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+#eventModal .modal-body {
+  padding: 0;
+}
+
+#eventForm .form-label {
+  font-weight: 500;
+  color: #394450;
+  margin-bottom: 8px;
+}
+
+#eventForm .form-control,
+#eventForm .form-select {
+  border-radius: 10px;
+  padding: 8px 12px;
+  border: 2px solid rgba(74, 129, 168, 0.1);
+  transition: all 0.3s ease;
+}
+
+#eventForm input:hover,
+#eventForm select:hover,
+#eventForm textarea:hover {
+  border-color: #3a6d8a;
+  outline: none;
+  box-shadow: 0 0 5px rgba(58, 109, 138, 0.8);
+}
+
+#eventForm input:focus,
+#eventForm select:focus,
+#eventForm textarea:focus {
+  border-color: #3a6d8a;
+  box-shadow: 0 0 5px rgba(58, 109, 138, 0.8);
+  outline: none;
+}
+
+#saveEventButton {
+  background-color: #6c757d;
+  border: #6c757d;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+#saveEventButton:hover {
+  background-color: #3a6d8a;
+  border-color: #3a6d8a;
+  color: #ffffff;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state h4 {
+  color: #394450;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.empty-state button {
+  padding: 10px 24px;
+  font-size: 18px;
+  border-radius: 24px;
+  background-color: #4a81a8;
+  color: white;
+  border: none;
+}
+
+#btnNewEvent {
+  transition: all 0.3s ease;
+}
+
+#btnNewEvent.minimized {
+  font-size: 14px;
+  padding: 6px 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -30px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .banner {
+    min-height: 200px;
+  }
+  .banner h1 {
+    font-size: 48px;
+  }
+}

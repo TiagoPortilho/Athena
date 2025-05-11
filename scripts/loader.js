@@ -111,6 +111,53 @@ async function loadRecentTasks() {
   });
 }
 
+// Função para carregar eventos recentes
+async function loadRecentEvents() {
+  const eventsList = document.getElementById('recentEvents');
+  if (!eventsList) return;
+
+  const events = await window.api.listEvents();
+  
+  if (events.length === 0) {
+    eventsList.innerHTML = `
+      <div class="empty-inbox">
+        <img src="https://c.animaapp.com/maelovkf66QMPN/img/stars.svg" class="empty-icon">
+        <h4>No events yet</h4>
+        <p>Start planning your schedule by creating your first event</p>
+        <a href="events.html" class="btn-create-first">
+          Create Event
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  const recentEvents = events
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .slice(0, 4);
+
+  eventsList.innerHTML = recentEvents
+    .map(event => `
+      <li class="list-group-item">
+        <div class="d-flex align-items-center flex-grow-1" style="gap: 12px;">
+          <div class="event-color-dot" style="background-color: ${event.color || '#4a81a8'}; width: 12px; height: 12px; border-radius: 50%;"></div>
+          <div class="d-flex flex-column">
+            <div class="project-name">${event.title}</div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="project-date">${new Date(event.date).toLocaleDateString()}</span>
+              ${event.description ? `<span class="text-muted">•</span><span class="project-date text-truncate" style="max-width: 200px;">${event.description}</span>` : ''}
+            </div>
+          </div>
+        </div>
+        <span class="project-status status-event">${getEventStatus(event.date)}</span>
+      </li>
+    `)
+    .join('');
+}
+
 function getDaysLeft(dueDate) {
   if (!dueDate) return "No date";
   const today = new Date();
@@ -122,7 +169,19 @@ function getDaysLeft(dueDate) {
   return "Overdue";
 }
 
-// Atualizar o event listener para incluir as tasks
+function getEventStatus(date) {
+  const today = new Date();
+  const eventDate = new Date(date);
+  const diff = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24));
+  
+  if (diff < 0) return "Past";
+  if (diff === 0) return "Today";
+  if (diff === 1) return "Tomorrow";
+  if (diff <= 7) return "This week";
+  return "Upcoming";
+}
+
+// Atualizar o event listener para incluir as tasks e eventos
 window.addEventListener('DOMContentLoaded', () => {
   // Existing preloader code
   window.addEventListener('load', function() {
@@ -132,7 +191,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Load recent projects and tasks
+  // Load recent projects, tasks, and events
   loadRecentProjects();
   loadRecentTasks();
+  loadRecentEvents();
 });

@@ -35,6 +35,14 @@ function initDb() {
       due_date    TEXT,
       created     INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS events (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      title       TEXT NOT NULL,
+      description TEXT,
+      date        TEXT NOT NULL,
+      color       TEXT,
+      created     INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -116,4 +124,31 @@ ipcMain.handle('update-task', (e, { id, description, due_date, done }) => {
 
 ipcMain.handle('delete-task', (e, id) => {
   db.prepare('DELETE FROM tasks WHERE id = ?').run(id);
+});
+
+// EVENTS CRUD
+ipcMain.handle('create-event', (e, { title, description, date, color }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO events (title, description, date, color, created)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+  const info = stmt.run(title, description, date, color, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('list-events', () => {
+  return db.prepare('SELECT * FROM events').all();
+});
+
+ipcMain.handle('update-event', (e, { id, title, description, date, color }) => {
+  db.prepare(`
+    UPDATE events
+    SET title = ?, description = ?, date = ?, color = ?
+    WHERE id = ?
+  `).run(title, description, date, color, id);
+});
+
+ipcMain.handle('delete-event', (e, id) => {
+  db.prepare('DELETE FROM events WHERE id = ?').run(id);
 });

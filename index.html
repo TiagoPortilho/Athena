@@ -64,10 +64,14 @@
             <img src="assets/images/image2.jpeg" class="card-img-top" />
             <div class="card-body">
               <p class="card-title d-flex align-items-center">
+                <a href="calendar.html" style="text-decoration: none; color: inherit;" class="d-flex align-items-center">
                 <img src="https://c.animaapp.com/maelovkf66QMPN/img/today.svg" class="card-icon" /> Calendar
+                </a>
               </p>
               <p class="card-title d-flex align-items-center">
+                <a href="events.html" style="text-decoration: none; color: inherit;" class="d-flex align-items-center">
                 <img src="https://c.animaapp.com/maelovkf66QMPN/img/stars.svg" class="card-icon" /> Events
+                </a>  
               </p>
             </div>
           </div>
@@ -129,8 +133,8 @@
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="calendar-tab" data-bs-toggle="tab" data-bs-target="#calendar" type="button" role="tab">
-          <img src="https://c.animaapp.com/maelovkf66QMPN/img/today.svg" class="nav-icon" />
-          Calendar
+          <img src="https://c.animaapp.com/maelovkf66QMPN/img/stars.svg" class="nav-icon" />
+          Events
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -211,10 +215,10 @@
       <div class="tab-pane fade" id="calendar" role="tabpanel">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div class="tab-header">
-            <h5>Calendar</h5>
-            <p class="text-muted">Your schedule at a glance</p>
+            <h5>Recent Events</h5>
+            <p class="text-muted">Your upcoming events and activities</p>
           </div>
-          <a href="calendar.html" class="btn btn-view-all">
+          <a href="events.html" class="btn btn-view-all">
             View All
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -223,16 +227,7 @@
         </div>
         <div class="inbox-content">
           <ul class="list-group" id="recentEvents">
-            <li class="list-group-item">
-              <div class="project-item-left">
-                <img src="https://c.animaapp.com/maelovkf66QMPN/img/today.svg" class="project-icon"/>
-                <div class="project-info">
-                  <div class="project-name">Team Meeting</div>
-                  <div class="project-date">Today at 2:00 PM</div>
-                </div>
-              </div>
-              <span class="project-status">Upcoming</span>
-            </li>
+            <!-- Events serão carregados aqui dinamicamente -->
           </ul>
         </div>
       </div>

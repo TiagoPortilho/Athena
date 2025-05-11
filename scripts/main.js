@@ -35,8 +35,8 @@ function initDb() {
 let db;
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    minWidth: 1024,
+    minHeight: 768,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -44,6 +44,7 @@ function createWindow() {
     }
   });
   win.loadFile('index.html');
+  win.maximize();
 }
 
 app.whenReady().then(() => {

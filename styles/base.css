@@ -1,0 +1,92 @@
+:root {
+  --color-darkest: #4a81a8;
+  --color-dark: #6597bb;
+  --color-mid: #85adc9;
+  --color-light: #a5c2d7;
+  --color-lighter: #c5d8e5;
+  --color-lightest: #ecf2f7;
+  --color-bg: #d1d1d1;
+  --color-text: #1e1e1e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+a:not([class]) {
+  color: var(--color-darkest);
+  text-decoration: none;
+}
+
+a:not([class]):hover {
+  text-decoration: underline;
+}
+
+button:not([class]) {
+  background-color: var(--color-darkest);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:not([class]):hover {
+  background-color: var(--color-dark);
+}
+
+input:not([class]), textarea:not([class]), select:not([class]) {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-lighter);
+  background-color: white;
+  color: var(--color-text);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-darkest);
+  box-shadow: 0 0 0 2px rgba(74, 129, 168, 0.25);
+}
+
+h1:not([class]), h2:not([class]), h3:not([class]) {
+  color: var(--color-darkest);
+  margin-bottom: 0.5rem;
+}
+
+p:not([class]) {
+  margin-bottom: 1rem;
+}
+
+::selection {
+  background-color: var(--color-mid);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-darkest);
+  border: 1px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-light);
+}

@@ -42,13 +42,13 @@ const grid = document.getElementById("projectGrid");
                 <div class="project-meta">${p.priority || ""}</div>
                 <small>${new Date(p.created * 1000).toLocaleDateString()}</small>
                 <div class="actions">
-                  <button class="btn btn-sm btn-outline-secondary edit">Editar</button>
-                  <button class="btn btn-sm btn-outline-danger del">Excluir</button>
+                  <button class="btn btn-sm btn-outline-secondary edit">Edit</button>
+                  <button class="btn btn-sm btn-outline-danger del">Delete</button>
                 </div>
               </div>`;
             card.querySelector(".edit").onclick = () => openForm(p);
             card.querySelector(".del").onclick = async () => {
-              if (confirm("Excluir este projeto?")) {
+              if (confirm("Delete this project?")) {
                 await window.api.deleteProject(p.id);
                 loadProjects();
               }
@@ -61,7 +61,7 @@ const grid = document.getElementById("projectGrid");
 
       function openForm(p = {}) {
         editingId = p.id || null;
-        modalTitle.textContent = editingId ? "Editar Projeto" : "Novo Projeto";
+        modalTitle.textContent = editingId ? "Edit Project" : "New Project";
         form.name.value = p.title || "";
         form.description.value = p.description || "";
         form.status.value = p.status || "not started";

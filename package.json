@@ -1,5 +1,6 @@
 {
-  "name": "athena-electron",
+  "name": "athena",
+  "projectName": "Athena",
   "version": "0.1.0",
   "description": "Athena – seu Second‑Brain em Electron + SQLite",
   "main": "scripts/main.js",

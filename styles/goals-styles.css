@@ -1,0 +1,440 @@
+:root {
+  --color-darkest: #4a81a8;
+  --color-dark: #6597bb;
+  --color-mid: #85adc9;
+  --color-light: #a5c2d7;
+  --color-lighter: #c5d8e5;
+  --color-lightest: #ecf2f7;
+  --color-bg: #d1d1d1;
+  --color-text: #1e1e1e;
+  --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.banner {
+  background-image: url("../assets/images/Banner.png");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner h1 {
+  font-family: "Megrim", sans-serif;
+  color: #0b558a;
+  font-size: 96px;
+}
+
+.subtitle {
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 50px;
+  color: #394450;
+}
+
+.description {
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 25px;
+  color: #4a81a8;
+}
+
+#goalsContainer {
+  max-width: 900px;
+  margin: 0 auto 100px auto;
+  padding: 0 20px;
+}
+
+/* Atualizando para seguir o padrão das tasks */
+.list-group-item {
+  background: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  padding: 22px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 20px 40px rgba(74, 129, 168, 0.1);
+  transition: var(--transition);
+}
+
+.list-group-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 24px 50px rgba(74, 129, 168, 0.15);
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.goal-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.goal-category {
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: #edf2f7;
+  color: #4a81a8;
+}
+
+.goal-description {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-top: 8px;
+}
+
+.goal-progress {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid rgba(74, 129, 168, 0.1);
+}
+
+.progress {
+  height: 10px !important;
+  border-radius: 5px;
+  background: #edf2f7;
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #4a81a8, #85adc9);
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes progress-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 0; }
+}
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.progress-stats > span:first-child {
+  text-align: left;
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.progress-stats > span:last-child {
+  text-align: right;
+  color: #4a81a8;
+  font-weight: 500;
+}
+
+.goal-metrics {
+  display: flex;
+  gap: 16px;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(74, 129, 168, 0.1);
+}
+
+.goal-metrics small {
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.goal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(74, 129, 168, 0.1);
+}
+
+.goal-deadline {
+  font-size: 0.875rem;
+  color: #7f8c8d;
+}
+
+.goal-deadline::before {
+  content: '📅';
+  font-size: 1.2rem;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(74, 129, 168, 0.2);
+  border-radius: 10px;
+  color: #4a81a8;
+  background: transparent;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn-action:hover {
+  background: #4a81a8;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-action svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2px;
+}
+
+.btn-action.del-goal {
+  color: #ef476f;
+  border-color: rgba(239, 71, 111, 0.2);
+}
+
+.btn-action.del-goal:hover {
+  background: #ef476f;
+  color: white;
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state h4 {
+  color: #394450;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+
+/* Modal styling alinhado com tasks */
+.modal-content {
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 24px 24px 0;
+}
+
+.modal-title {
+  font-family: "Zen Kurenaido", sans-serif;
+  color: #394450;
+  font-size: 32px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.form-label {
+  color: #394450;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.form-control, .form-select {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #4a81a8;
+  box-shadow: 0 0 0 3px rgba(74, 129, 168, 0.1);
+}
+
+.form-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.btn-primary {
+  background: #4a81a8;
+  border: none;
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #3a6d8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 129, 168, 0.2);
+}
+
+#btnNewGoal {
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  color: #4a81a8;
+  border: 1px solid rgba(74, 129, 168, 0.2);
+  transition: all 0.3s ease;
+}
+
+#btnNewGoal:hover {
+  background: #4a81a8;
+  color: white;
+}
+
+/* Atualização dos botões para seguir o padrão do tasks */
+.btn-outline-secondary, 
+.btn-outline-danger,
+.btn-outline-primary, 
+#btnNewGoal {
+  border-radius: 24px;
+  color: #6c757d;
+  border-color: #6c757d;
+  transition: var(--transition);
+  padding: 8px 24px;
+  font-size: 16px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #edf2f7;
+  color: #4a81a8;
+  border-color: #4a81a8;
+}
+
+.btn-outline-danger:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: #4a81a8;
+  border: 1px solid #4a81a8;
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-family: "Zen Kurenaido", sans-serif;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.btn-outline-primary:hover {
+  background: #4a81a8;
+  color: white;
+  border-color: #4a81a8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 129, 168, 0.2);
+}
+
+#btnNewGoal:hover {
+  background-color: #3a6d8a;
+  color: white;
+  border-color: #3a6d8a;
+  box-shadow: 0 4px 8px rgba(58, 109, 138, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Modal buttons */
+#saveGoalBtn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  background-color: #4a81a8;
+  border: none;
+  transition: var(--transition);
+}
+
+#saveGoalBtn:hover {
+  background-color: #3a6d8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 129, 168, 0.2);
+}
+
+.btn-close {
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.btn-back {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+  color: #1e1e1e;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.btn-back:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.goals-header .btn-outline-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border: 1px solid #4a81a8;
+  color: #4a81a8;
+  background: transparent;
+}
+
+.goals-header .btn-outline-primary:hover {
+  background: #4a81a8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 129, 168, 0.2);
+}
+
+.goals-header .btn-outline-primary svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+@media (max-width: 700px) {
+  .banner {
+    min-height: 200px;
+  }
+  .banner h1 {
+    font-size: 48px;
+  }
+}

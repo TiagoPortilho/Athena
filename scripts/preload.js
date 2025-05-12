@@ -33,4 +33,9 @@ contextBridge.exposeInMainWorld('api', {
   getTransaction: (id) => ipcRenderer.invoke('getTransaction', id),
   updateTransaction: (data) => ipcRenderer.invoke('updateTransaction', data),
   deleteTransaction: (id) => ipcRenderer.invoke('deleteTransaction', id),
+  // Goals CRUD
+  createGoal: (data) => ipcRenderer.invoke('create-goal', data),
+  listGoals: () => ipcRenderer.invoke('list-goals'),
+  updateGoal: (data) => ipcRenderer.invoke('update-goal', data),
+  deleteGoal: (id) => ipcRenderer.invoke('delete-goal', id),
 });

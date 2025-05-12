@@ -315,6 +315,60 @@ async function loadRecentTransactions() {
     `).join('');
 }
 
+// Função para carregar goals recentes
+async function loadRecentGoals() {
+  const goalsList = document.getElementById('recentGoals');
+  if (!goalsList) return;
+
+  const goals = await window.api.listGoals();
+  
+  if (goals.length === 0) {
+    goalsList.innerHTML = `
+      <div class="empty-inbox">
+        <img src="https://c.animaapp.com/maelovkf66QMPN/img/crosshair.svg" class="empty-icon">
+        <h4>No goals yet</h4>
+        <p>Start tracking your progress by setting your first goal</p>
+        <a href="goals.html" class="btn-create-first">
+          Set Goal
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  const recentGoals = goals
+    .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+    .slice(0, 4);
+
+  goalsList.innerHTML = recentGoals
+    .map(goal => {
+      const progress = goal.current_value / goal.target_value * 100;
+      const progressCapped = Math.min(Math.round(progress), 100);
+      const daysLeft = Math.ceil((new Date(goal.deadline) - new Date()) / (1000 * 60 * 60 * 24));
+      
+      return `
+        <li class="list-group-item">
+          <div class="project-item-left">
+            <img src="https://c.animaapp.com/maelovkf66QMPN/img/crosshair.svg" class="project-icon"/>
+            <div class="project-info">
+              <div class="project-name">${goal.title}</div>
+              <div class="project-date d-flex align-items-center gap-2">
+                <span>${goal.category}</span>
+                <span class="text-muted">•</span>
+                <span>${daysLeft} days left</span>
+              </div>
+            </div>
+          </div>
+          <span class="project-status">${progressCapped}%</span>
+        </li>
+      `;
+    })
+    .join('');
+}
+
 function getDaysLeft(dueDate) {
   if (!dueDate) return "No date";
   const today = new Date();
@@ -422,12 +476,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Load recent projects, tasks, events, notes, resources, and transactions
+  // Load recent projects, tasks, events, notes, resources, transactions, and goals
   loadRecentProjects();
   loadRecentTasks();
   loadRecentEvents();
   loadRecentNotes();
   loadRecentResources();
   loadRecentTransactions();
+  loadRecentGoals();
   updateFinanceOverview();
 });

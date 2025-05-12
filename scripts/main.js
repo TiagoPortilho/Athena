@@ -64,6 +64,18 @@ function initDb() {
       value REAL NOT NULL,
       created INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS goals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      description TEXT,
+      target_value REAL NOT NULL,
+      current_value REAL NOT NULL DEFAULT 0,
+      current_streak INTEGER DEFAULT 0,
+      activity_type TEXT,
+      category TEXT NOT NULL,
+      deadline TEXT,
+      created INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -257,4 +269,31 @@ ipcMain.handle('updateTransaction', (e, { id, type, description, value }) => {
 
 ipcMain.handle('deleteTransaction', (e, id) => {
   db.prepare('DELETE FROM transactions WHERE id = ?').run(id);
+});
+
+// Goals CRUD
+ipcMain.handle('create-goal', (e, { title, description, category, target_value, current_value, deadline }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO goals (title, description, category, target_value, current_value, deadline, created)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `);
+  const info = stmt.run(title, description, category, target_value, current_value, deadline, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('list-goals', () => {
+  return db.prepare('SELECT * FROM goals ORDER BY deadline ASC').all();
+});
+
+ipcMain.handle('update-goal', (e, { id, title, description, category, target_value, current_value, deadline }) => {
+  db.prepare(`
+    UPDATE goals
+    SET title = ?, description = ?, category = ?, target_value = ?, current_value = ?, deadline = ?
+    WHERE id = ?
+  `).run(title, description, category, target_value, current_value, deadline, id);
+});
+
+ipcMain.handle('delete-goal', (e, id) => {
+  db.prepare('DELETE FROM goals WHERE id = ?').run(id);
 });

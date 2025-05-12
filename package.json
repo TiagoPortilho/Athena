@@ -54,5 +54,6 @@
     "linux": {
       "target": "AppImage"
     }
-  }
+  },
+  "window.menuBarVisibility": "hidden"
 }

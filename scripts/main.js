@@ -85,6 +85,8 @@ function createWindow() {
   const win = new BrowserWindow({
     minWidth: 1024,
     minHeight: 768,
+    autoHideMenuBar: true,
+    icon: path.join(__dirname, 'assets', 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

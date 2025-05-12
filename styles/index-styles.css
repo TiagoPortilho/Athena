@@ -473,3 +473,323 @@ html {
         text-decoration: underline;
         color: #0b558a;
       }
+
+      /* Finance Summary Styling */
+      .finance-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .balance-card {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        transition: var(--transition-medium);
+      }
+
+      .balance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 129, 168, 0.1);
+      }
+
+      .balance-card .label {
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .balance-card h3 {
+        color: #394450;
+        font-size: 32px;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .balance-details {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .income-pill, .expense-pill {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .income-pill {
+        background: rgba(72, 187, 120, 0.1);
+        color: #48bb78;
+      }
+
+      .expense-pill {
+        background: rgba(245, 101, 101, 0.1);
+        color: #f56565;
+      }
+
+      .income-pill svg, .expense-pill svg {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2.5;
+      }
+
+      /* Finance Overview Section */
+      .section-title {
+        font-family: "Zen Kurenaido", sans-serif;
+        font-size: 32px;
+        color: #394450;
+        margin-bottom: 8px;
+      }
+
+      .finance-overview-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 24px;
+        height: 100%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 20px 40px rgba(74, 129, 168, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .finance-overview-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 24px 50px rgba(74, 129, 168, 0.15);
+      }
+
+      .finance-balance {
+        text-align: center;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #edf2f7;
+      }
+
+      .finance-balance .label {
+        display: block;
+        color: #718096;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .finance-balance h3 {
+        color: #2d3748;
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .finance-stats {
+        display: flex;
+        justify-content: space-around;
+        gap: 16px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        border-radius: 12px;
+        flex: 1;
+      }
+
+      .stat-item.income {
+        background: rgba(72, 187, 120, 0.1);
+        color: #48bb78;
+      }
+
+      .stat-item.expense {
+        background: rgba(245, 101, 101, 0.1);
+        color: #f56565;
+      }
+
+      .stat-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-info .label {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .stat-info .value {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      /* Finance Overview Section */
+      .finance-overview {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 20px 40px rgba(74, 129, 168, 0.1);
+        margin-bottom: 40px;
+      }
+
+      .overview-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Zen Kurenaido", sans-serif;
+        font-size: 32px;
+        color: #394450;
+        margin: 0;
+      }
+
+      .overview-icon {
+        width: 32px;
+        height: 32px;
+        opacity: 0.8;
+      }
+
+      .overview-subtitle {
+        color: #6c757d;
+        font-size: 16px;
+        margin: 4px 0 0 44px;
+      }
+
+      .btn-finance {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #4a81a8;
+        color: white;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-finance:hover {
+        background: #3a6d8a;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 129, 168, 0.2);
+        color: white !important;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .overview-balance {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        gap: 24px;
+      }
+
+      .balance-content {
+        flex: 1;
+      }
+
+      .balance-label {
+        display: block;
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .overview-balance h3 {
+        font-size: 42px;
+        color: #394450;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .chart-wrapper {
+        width: 180px;
+        height: 180px;
+      }
+
+      .overview-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .stat-card {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateX(8px);
+      }
+
+      .stat-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stat-card.income .stat-icon {
+        background: rgba(72, 187, 120, 0.1);
+        color: #48bb78;
+      }
+
+      .stat-card.expense .stat-icon {
+        background: rgba(245, 101, 101, 0.1);
+        color: #f56565;
+      }
+
+      .stat-info span {
+        display: block;
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .stat-info h4 {
+        font-size: 24px;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .stat-card.income h4 { color: #48bb78; }
+      .stat-card.expense h4 { color: #f56565; }
+
+      @media (max-width: 768px) {
+        .overview-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .overview-balance {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      .chart-container {
+        height: 300px;
+        padding: 24px;
+        background: #f8f9fa;
+        border-radius: 16px;
+        margin-top: 32px;
+      }
+
+      /* Atualizações para o Chart.js */
+      #financeChart {
+        max-height: 300px !important;
+      }

@@ -102,7 +102,9 @@
             <img src="assets/images/image4.jpeg" class="card-img-top" />
             <div class="card-body">
               <p class="card-title d-flex align-items-center">
+                <a href="finances.html" style="text-decoration: none; color: inherit;" class="d-flex align-items-center">
                 <img src="https://c.animaapp.com/maelovkf66QMPN/img/dollar-sign.svg" class="card-icon" /> Finance
+                </a>
               </p>
               <p class="card-title d-flex align-items-center">
                 <img src="https://c.animaapp.com/maelovkf66QMPN/img/crosshair.svg" class="card-icon" /> Goals
@@ -151,6 +153,13 @@
         <button class="nav-link" id="resources-tab" data-bs-toggle="tab" data-bs-target="#resources" type="button" role="tab">
           <img src="https://c.animaapp.com/maelovkf66QMPN/img/bookmark.svg" class="nav-icon" />
           Resources
+        </button>
+      </li>
+      <!-- Add new Finances tab -->
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="finances-tab" data-bs-toggle="tab" data-bs-target="#finances" type="button" role="tab">
+          <img src="https://c.animaapp.com/maelovkf66QMPN/img/dollar-sign.svg" class="nav-icon" />
+          Finances
         </button>
       </li>
     </ul>
@@ -275,10 +284,114 @@
           </ul>
         </div>
       </div>
+
+      <!-- Add Finances tab content -->
+      <div class="tab-pane fade" id="finances" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="tab-header">
+            <h5>Financial Overview</h5>
+            <p class="text-muted">Track your income and expenses</p>
+          </div>
+          <a href="finances.html" class="btn btn-view-all">
+            View All
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div class="inbox-content">
+          <div class="finance-summary">
+            <div class="balance-card">
+              <span class="label">Current Balance</span>
+              <h3 id="inboxBalance">R$ 0,00</h3>
+              <div class="balance-details">
+                <div class="income-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                  </svg>
+                  <span id="inboxIncome">R$ 0,00</span>
+                </div>
+                <div class="expense-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                  </svg>
+                  <span id="inboxExpenses">R$ 0,00</span>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group" id="recentTransactions">
+              <!-- Transactions will be loaded dynamically -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Faixa decorativa inferior -->
+  <!-- Faixa decorativa inferior do Inbox -->
+  <div style="background-color: rgba(74, 129, 168, 0.14); height: 40px; margin-top: 40px;"></div>
+
+  <!-- Finance Overview Section -->
+  <div class="container mt-5">
+    <div class="finance-overview">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="overview-title">
+            <img src="https://c.animaapp.com/maelovkf66QMPN/img/dollar-sign.svg" class="overview-icon" />
+            Financial Overview
+          </h2>
+          <p class="overview-subtitle">Your financial health at a glance</p>
+        </div>
+        <a href="finances.html" class="btn-finance">
+          <span>Manage Finances</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="overview-grid">
+        <div class="overview-balance">
+          <div class="balance-content">
+            <span class="balance-label">Current Balance</span>
+            <h3 id="overviewBalance">R$ 0,00</h3>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="financeChart"></canvas>
+          </div>
+        </div>
+
+        <div class="overview-stats">
+          <div class="stat-card income">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span>Total Income</span>
+              <h4 id="overviewIncome">R$ 0,00</h4>
+            </div>
+          </div>
+
+          <div class="stat-card expense">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span>Total Expenses</span>
+              <h4 id="overviewExpenses">R$ 0,00</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faixa decorativa final -->
   <div style="background-color: rgba(74, 129, 168, 0.14); height: 40px; margin-top: 40px;"></div>
 
     <!-- Bootstrap JS -->
@@ -286,5 +399,8 @@
 
     <!-- Custom JS for preloader -->
     <script src="scripts/loader.js"></script>
+
+    <!-- Add Chart.js before the closing body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

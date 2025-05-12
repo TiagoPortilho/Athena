@@ -27,4 +27,10 @@ contextBridge.exposeInMainWorld('api', {
   listResources: () => ipcRenderer.invoke('list-resources'),
   updateResource: (data) => ipcRenderer.invoke('update-resource', data),
   deleteResource: (id) => ipcRenderer.invoke('delete-resource', id),
+  // Transactions CRUD
+  createTransaction: (data) => ipcRenderer.invoke('createTransaction', data),
+  listTransactions: () => ipcRenderer.invoke('listTransactions'),
+  getTransaction: (id) => ipcRenderer.invoke('getTransaction', id),
+  updateTransaction: (data) => ipcRenderer.invoke('updateTransaction', data),
+  deleteTransaction: (id) => ipcRenderer.invoke('deleteTransaction', id),
 });

@@ -57,6 +57,13 @@ function initDb() {
       image TEXT,
       created INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS transactions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      type TEXT NOT NULL,
+      description TEXT NOT NULL,
+      value REAL NOT NULL,
+      created INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -219,4 +226,35 @@ ipcMain.handle('update-resource', (e, { id, title, description, link, image }) =
 
 ipcMain.handle('delete-resource', (e, id) => {
   db.prepare('DELETE FROM resources WHERE id = ?').run(id);
+});
+
+// Transactions CRUD
+ipcMain.handle('createTransaction', (e, { type, description, value }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO transactions (type, description, value, created)
+    VALUES (?, ?, ?, ?)
+  `);
+  const info = stmt.run(type, description, value, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('listTransactions', () => {
+  return db.prepare('SELECT * FROM transactions ORDER BY created DESC').all();
+});
+
+ipcMain.handle('getTransaction', (e, id) => {
+  return db.prepare('SELECT * FROM transactions WHERE id = ?').get(id);
+});
+
+ipcMain.handle('updateTransaction', (e, { id, type, description, value }) => {
+  db.prepare(`
+    UPDATE transactions
+    SET type = ?, description = ?, value = ?
+    WHERE id = ?
+  `).run(type, description, value, id);
+});
+
+ipcMain.handle('deleteTransaction', (e, id) => {
+  db.prepare('DELETE FROM transactions WHERE id = ?').run(id);
 });

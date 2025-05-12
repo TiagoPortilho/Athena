@@ -254,6 +254,67 @@ async function loadRecentResources() {
     .join('');
 }
 
+// Função para carregar transações recentes
+async function loadRecentTransactions() {
+  const transactionsList = document.getElementById('recentTransactions');
+  if (!transactionsList) return;
+
+  const transactions = await window.api.listTransactions();
+  
+  if (transactions.length === 0) {
+    transactionsList.innerHTML = `
+      <div class="empty-inbox">
+        <img src="https://c.animaapp.com/maelovkf66QMPN/img/dollar-sign.svg" class="empty-icon">
+        <h4>No transactions yet</h4>
+        <p>Start tracking your finances by adding your first transaction</p>
+        <a href="finances.html" class="btn-create-first">
+          Add Transaction
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    document.getElementById('inboxBalance').textContent = 'R$ 0,00';
+    document.getElementById('inboxIncome').textContent = 'R$ 0,00';
+    document.getElementById('inboxExpenses').textContent = 'R$ 0,00';
+    return;
+  }
+
+  const recentTransactions = transactions
+    .sort((a, b) => b.created - a.created)
+    .slice(0, 3);
+
+  const income = transactions
+    .filter(t => t.type === 'income')
+    .reduce((sum, t) => sum + t.value, 0);
+    
+  const expenses = transactions
+    .filter(t => t.type === 'expense')
+    .reduce((sum, t) => sum + t.value, 0);
+    
+  const balance = income - expenses;
+
+  document.getElementById('inboxBalance').textContent = formatCurrency(balance);
+  document.getElementById('inboxIncome').textContent = formatCurrency(income);
+  document.getElementById('inboxExpenses').textContent = formatCurrency(expenses);
+
+  transactionsList.innerHTML = recentTransactions
+    .map(transaction => `
+      <li class="list-group-item">
+        <div class="project-item-left">
+          <div class="project-info">
+            <div class="project-name">${transaction.description}</div>
+            <div class="project-date">Added: ${new Date(transaction.created * 1000).toLocaleDateString()}</div>
+          </div>
+        </div>
+        <span class="project-status ${transaction.type === 'income' ? 'income' : 'expense'}">
+          ${formatCurrency(transaction.value)}
+        </span>
+      </li>
+    `).join('');
+}
+
 function getDaysLeft(dueDate) {
   if (!dueDate) return "No date";
   const today = new Date();
@@ -277,6 +338,80 @@ function getEventStatus(date) {
   return "Upcoming";
 }
 
+function formatCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(value);
+}
+
+let financeChart = null;
+
+async function updateFinanceOverview() {
+  const transactions = await window.api.listTransactions();
+  
+  const income = transactions
+    .filter(t => t.type === 'income')
+    .reduce((sum, t) => sum + t.value, 0);
+    
+  const expenses = transactions
+    .filter(t => t.type === 'expense')
+    .reduce((sum, t) => sum + t.value, 0);
+    
+  const balance = income - expenses;
+
+  // Update overview values
+  document.getElementById('overviewBalance').textContent = formatCurrency(balance);
+  document.getElementById('overviewIncome').textContent = formatCurrency(income);
+  document.getElementById('overviewExpenses').textContent = formatCurrency(expenses);
+
+  // Initialize or update chart
+  const ctx = document.getElementById('financeChart');
+  if (ctx) {
+    if (financeChart) {
+      financeChart.destroy();
+    }
+
+    financeChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Income', 'Expenses'],
+        datasets: [{
+          data: [income, expenses],
+          backgroundColor: [
+            'rgba(72, 187, 120, 0.2)',
+            'rgba(245, 101, 101, 0.2)'
+          ],
+          borderColor: [
+            '#48bb78',
+            '#f56565'
+          ],
+          borderWidth: 2,
+          borderRadius: 8,
+          spacing: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        cutout: '75%',
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return formatCurrency(context.raw);
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+}
+
 // Atualizar o event listener para incluir as tasks e eventos
 window.addEventListener('DOMContentLoaded', () => {
   // Existing preloader code
@@ -287,10 +422,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Load recent projects, tasks, events, notes, and resources
+  // Load recent projects, tasks, events, notes, resources, and transactions
   loadRecentProjects();
   loadRecentTasks();
   loadRecentEvents();
   loadRecentNotes();
   loadRecentResources();
+  loadRecentTransactions();
+  updateFinanceOverview();
 });

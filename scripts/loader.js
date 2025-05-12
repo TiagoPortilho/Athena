@@ -202,6 +202,58 @@ async function loadRecentNotes() {
     .join('');
 }
 
+// Função para carregar recursos recentes
+async function loadRecentResources() {
+  const resourcesList = document.getElementById('recentResources');
+  if (!resourcesList) return;
+
+  const resources = await window.api.listResources();
+  
+  if (resources.length === 0) {
+    resourcesList.innerHTML = `
+      <div class="empty-inbox">
+        <img src="https://c.animaapp.com/maelovkf66QMPN/img/bookmark.svg" class="empty-icon">
+        <h4>No resources yet</h4>
+        <p>Start building your collection by adding your first resource</p>
+        <a href="resources.html" class="btn-create-first">
+          Add Resource
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  const recentResources = resources
+    .sort((a, b) => b.created - a.created)
+    .slice(0, 4);
+
+  resourcesList.innerHTML = recentResources
+    .map(resource => `
+      <li class="list-group-item">
+        <div class="project-item-left">
+          <img src="https://c.animaapp.com/maelovkf66QMPN/img/bookmark.svg" class="project-icon"/>
+          <div class="project-info">
+            <div class="project-name">${resource.title}</div>
+            <div class="project-date d-flex align-items-center gap-2">
+              <span>Added: ${new Date(resource.created * 1000).toLocaleDateString()}</span>
+              ${resource.link ? `
+                <span class="text-muted">•</span>
+                <a href="${resource.link}" target="_blank" class="resource-link text-truncate" style="max-width: 200px;">
+                  ${resource.link}
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+        <span class="project-status">Resource</span>
+      </li>
+    `)
+    .join('');
+}
+
 function getDaysLeft(dueDate) {
   if (!dueDate) return "No date";
   const today = new Date();
@@ -235,9 +287,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Load recent projects, tasks, events, and notes
+  // Load recent projects, tasks, events, notes, and resources
   loadRecentProjects();
   loadRecentTasks();
   loadRecentEvents();
   loadRecentNotes();
+  loadRecentResources();
 });

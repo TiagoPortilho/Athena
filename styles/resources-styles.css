@@ -1,0 +1,210 @@
+:root {
+  --transition-smooth: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#btnNewResource {
+  border-radius: 24px;
+  color: #6c757d;
+  border-color: #6c757d;
+  transition: var(--transition-smooth);
+  padding: 8px 24px;
+  font-size: 16px;
+}
+
+#btnNewResource:hover {
+  background-color: #3a6d8a;
+  color: white;
+  border-color: #3a6d8a;
+  box-shadow: 0 4px 8px rgba(58, 109, 138, 0.4);
+  transform: translateY(-2px);
+}
+
+.resource-card {
+  width: 310px;
+  min-height: 350px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 20px 40px rgba(74, 129, 168, 0.1);
+  padding: 22px 22px 16px;
+  margin: 0 auto 24px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.resource-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 24px 50px rgba(74, 129, 168, 0.15);
+}
+
+.resource-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: #f8f9fa;
+}
+
+.resource-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #394450;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resource-description {
+  color: rgba(30, 30, 30, 0.65);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.resource-link {
+  color: #4a81a8;
+  font-size: 15px;
+  text-decoration: underline;
+  word-break: break-all;
+  margin-bottom: 8px;
+  display: block;
+  transition: color 0.2s;
+}
+
+.resource-link:hover {
+  color: #0b558a;
+}
+
+.resource-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(74, 129, 168, 0.2);
+  border-radius: 10px;
+  color: #4a81a8;
+  background: transparent;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn-action svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.btn-action:hover {
+  background: rgba(74, 129, 168, 0.1);
+  transform: translateY(-2px);
+  border-color: #4a81a8;
+}
+
+.btn-action.del-resource {
+  color: #ef476f;
+  border-color: rgba(239, 71, 111, 0.2);
+}
+
+.btn-action.del-resource:hover {
+  background: rgba(239, 71, 111, 0.1);
+  border-color: #ef476f;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+.empty-state h4 {
+  color: #394450;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.empty-state button {
+  padding: 10px 24px;
+  font-size: 18px;
+  border-radius: 24px;
+  background-color: #4a81a8;
+  color: white;
+  border: none;
+}
+
+/* Form styling */
+#resourceForm input,
+#resourceForm textarea {
+  border: 1px solid rgba(108, 117, 125, 0.2);
+  transition: var(--transition-smooth);
+}
+
+#resourceForm input:hover,
+#resourceForm textarea:hover {
+  border-color: #3a6d8a;
+  outline: none;
+  box-shadow: 0 0 5px rgba(58, 109, 138, 0.8);
+}
+
+#resourceForm input:focus,
+#resourceForm textarea:focus {
+  border-color: #3a6d8a;
+  box-shadow: 0 0 5px rgba(58, 109, 138, 0.8);
+  outline: none;
+}
+
+#resourceForm label {
+  color: #394450;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+#saveResourceButton {
+  background-color: #6c757d;
+  border: #6c757d;
+  color: white;
+  padding: 12px;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+#saveResourceButton:hover {
+  background-color: #3a6d8a;
+  border-color: #3a6d8a;
+  color: #ffffff;
+}
+
+.modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(108, 117, 125, 0.1);
+  padding: 20px 24px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(108, 117, 125, 0.1);
+  padding: 20px 24px;
+}

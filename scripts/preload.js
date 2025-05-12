@@ -22,4 +22,9 @@ contextBridge.exposeInMainWorld('api', {
   listNotes: () => ipcRenderer.invoke('list-notes'),
   updateNote: (data) => ipcRenderer.invoke('update-note', data),
   deleteNote: (id) => ipcRenderer.invoke('delete-note', id),
+  // Resources CRUD
+  createResource: (data) => ipcRenderer.invoke('create-resource', data),
+  listResources: () => ipcRenderer.invoke('list-resources'),
+  updateResource: (data) => ipcRenderer.invoke('update-resource', data),
+  deleteResource: (id) => ipcRenderer.invoke('delete-resource', id),
 });

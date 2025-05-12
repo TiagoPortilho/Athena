@@ -462,3 +462,14 @@ html {
         flex-shrink: 0;
         margin-top: 2px;
       }
+
+      .resource-link {
+        color: #4a81a8;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .resource-link:hover {
+        text-decoration: underline;
+        color: #0b558a;
+      }

@@ -49,6 +49,14 @@ function initDb() {
       text  TEXT NOT NULL,
       created INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS resources (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      description TEXT,
+      link TEXT,
+      image TEXT,
+      created INTEGER NOT NULL
+    );
   `);
   return db;
 }
@@ -184,4 +192,31 @@ ipcMain.handle('update-note', (e, { id, title, text }) => {
 
 ipcMain.handle('delete-note', (e, id) => {
   db.prepare('DELETE FROM notes WHERE id = ?').run(id);
+});
+
+// RESOURCES CRUD
+ipcMain.handle('create-resource', (e, { title, description, link, image }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const stmt = db.prepare(`
+    INSERT INTO resources (title, description, link, image, created)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+  const info = stmt.run(title, description, link, image, now);
+  return info.lastInsertRowid;
+});
+
+ipcMain.handle('list-resources', () => {
+  return db.prepare('SELECT * FROM resources ORDER BY created DESC').all();
+});
+
+ipcMain.handle('update-resource', (e, { id, title, description, link, image }) => {
+  db.prepare(`
+    UPDATE resources
+    SET title = ?, description = ?, link = ?, image = ?
+    WHERE id = ?
+  `).run(title, description, link, image, id);
+});
+
+ipcMain.handle('delete-resource', (e, id) => {
+  db.prepare('DELETE FROM resources WHERE id = ?').run(id);
 });

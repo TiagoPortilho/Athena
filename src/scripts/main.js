@@ -93,7 +93,7 @@ function createWindow() {
       nodeIntegration: false
     }
   });
-  win.loadFile('index.html');
+  win.loadFile(path.join(__dirname, '../views/index.html'));
   win.maximize();
 }
 

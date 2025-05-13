@@ -3,7 +3,7 @@
   "projectName": "Athena",
   "version": "0.1.0",
   "description": "Athena – seu Second‑Brain em Electron + SQLite",
-  "main": "scripts/main.js",
+  "main": "src/scripts/main.js",
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild -f -w better-sqlite3",

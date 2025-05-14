@@ -1,10 +1,4 @@
-window.addEventListener("load", () => {
-        const preloader = document.getElementById("preloader");
-        preloader.style.opacity = "0";
-        setTimeout(() => {
-          preloader.style.display = "none";
-        }, 500);
-      });
+let financeChart = null;
 
 // Função para carregar projetos recentes
 async function loadRecentProjects() {
@@ -30,7 +24,7 @@ async function loadRecentProjects() {
     return;
   }
 
-  const recentProjects = projects
+  const recentProjects = projectsio
     .sort((a, b) => new Date(b.end_date) - new Date(a.end_date))
     .slice(0, 4);
 
@@ -399,8 +393,6 @@ function formatCurrency(value) {
   }).format(value);
 }
 
-let financeChart = null;
-
 async function updateFinanceOverview() {
   const transactions = await window.api.listTransactions();
   
@@ -465,6 +457,15 @@ async function updateFinanceOverview() {
     });
   }
 }
+
+window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+          preloader.style.display = "none";
+        }, 500);
+      });
+
 
 // Atualizar o event listener para incluir as tasks e eventos
 window.addEventListener('DOMContentLoaded', () => {

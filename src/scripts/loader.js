@@ -24,7 +24,7 @@ async function loadRecentProjects() {
     return;
   }
 
-  const recentProjects = projectsio
+  const recentProjects = projects
     .sort((a, b) => new Date(b.end_date) - new Date(a.end_date))
     .slice(0, 4);
 

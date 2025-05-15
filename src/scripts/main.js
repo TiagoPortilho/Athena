@@ -4,9 +4,10 @@ const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
 const { queries: sql_req } = require('../database/sql-queries.js'); //Importando as queries SQL
+const now = Math.floor(Date.now() / 1000);
+
 
 let db; // Variavel global para o banco de dados
-const now = Math.floor(Date.now() / 1000);
 
 // Inicia o banco de dados SQLite
 function initDb() {
@@ -112,7 +113,7 @@ ipcMain.handle('list-events', () => {
 });
 
 ipcMain.handle('update-event', (e, { id, title, description, date, color }) => {
-  db.prepare(sql_req.update_events).run(title, description, date, color, id);
+  db.prepare(sql_req.update_event).run(title, description, date, color, id);
 });
 
 ipcMain.handle('delete-event', (e, id) => {
@@ -144,7 +145,6 @@ ipcMain.handle('delete-note', (e, id) => {
 
 // RESOURCES CRUD
 ipcMain.handle('create-resource', (e, { title, description, link, image }) => {
-  const now = Math.floor(Date.now() / 1000);
   const stmt = db.prepare(sql_req.create_resource);
   const info = stmt.run(title, description, link, image, now);
   return info.lastInsertRowid;

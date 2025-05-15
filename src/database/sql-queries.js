@@ -24,21 +24,21 @@ export const queries = {
     delete_note: "DELETE FROM notes WHERE id = ?",
 
     // Resources
-    create_resource: "INSERT INTO resources (title, description, url, created) VALUES (?, ?, ?, ?)",
+    create_resource: "INSERT INTO resources (title, description, link, image, created) VALUES (?, ?, ?, ?, ?)",
     list_resources: "SELECT * FROM resources",
-    update_resource: "UPDATE resources SET title = ?, description = ?, url = ? WHERE id = ?",
+    update_resource: "UPDATE resources SET title = ?, description = ?, link = ?, image = ? WHERE id = ?",
     delete_resource: "DELETE FROM resources WHERE id = ?",
 
     // Transactions
-    create_transaction: "INSERT INTO transactions (description, amount, date, created) VALUES (?, ?, ?, ?)",
+    create_transaction: "INSERT INTO transactions (type, description, value, created) VALUES (?, ?, ?, ?)",
     list_transactions: "SELECT * FROM transactions",
     get_transaction: "SELECT * FROM transactions WHERE id = ?",
-    update_transaction: "UPDATE transactions SET description = ?, amount = ?, date = ? WHERE id = ?",
+    update_transaction: "UPDATE transactions SET type = ?, description = ?, value = ? WHERE id = ?",
     delete_transaction: "DELETE FROM transactions WHERE id = ?",
 
     // Goals
-    create_goal: "INSERT INTO goals (title, description, target_date, created) VALUES (?, ?, ?, ?)",
+    create_goal: "INSERT INTO goals (title, description, category, target_value, current_value, deadline, created) VALUES (?, ?, ?, ?, ? ,? ,?)",
     list_goals: "SELECT * FROM goals",
-    update_goal: "UPDATE goals SET title = ?, description = ?, target_date = ? WHERE id = ?",
+    update_goal: "UPDATE goals SET title = ?, description = ?, category = ?, target_value = ?, current_value = ?, deadline = ? WHERE id = ?",
     delete_goal: "DELETE FROM goals WHERE id = ?"
 };

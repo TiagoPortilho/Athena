@@ -39,14 +39,17 @@
   "build": {
     "appId": "com.tiagoportilho.athena",
     "productName": "Athena",
+    "icon": "src/assets/images/icon.png",
     "files": [
       "**/*"
     ],
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "src/assets"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "forceCodeSigning": false,
+      "signAndEditExecutable": false
     },
     "mac": {
       "target": "dmg"

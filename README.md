@@ -82,6 +82,10 @@ npm start
 npm run build
 ```
 
+## Download
+
+Download the latest version from [GitHub Releases](https://github.com/TiagoPortilho/Athena/releases).
+
 ## License
 
 This project is licensed under the [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) license.
@@ -173,6 +177,10 @@ npm start
 # Build para distribuição
 npm run build
 ```
+
+## Download
+
+Baixe a versão mais recente em [GitHub Releases](https://github.com/TiagoPortilho/Athena/releases).
 
 ## Licença
 

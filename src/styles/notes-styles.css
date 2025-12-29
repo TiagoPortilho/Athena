@@ -100,6 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
+  overflow-y: auto;
 }
 
 .notes-card:hover {
@@ -161,13 +162,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 28px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 8;
-  line-clamp: 8;
-  -webkit-box-orient: vertical;
   flex: 1;
+  overflow-y: auto;
 }
 
 .dropdown-content {

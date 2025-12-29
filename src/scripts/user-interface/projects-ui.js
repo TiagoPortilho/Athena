@@ -66,11 +66,11 @@ async function loadProjects() {
           <div class="date-row">
             <div class="date-group">
               <div class="date-label">Start date</div>
-              <div class="date-value">${new Date(p.start_date).toLocaleDateString()}</div>
+              <div class="date-value">${new Date(p.start_date + 'T00:00:00').toLocaleDateString()}</div>
             </div>
             <div class="date-group">
               <div class="date-label">End date</div>
-              <div class="date-value">${new Date(p.end_date).toLocaleDateString()}</div>
+              <div class="date-value">${new Date(p.end_date + 'T00:00:00').toLocaleDateString()}</div>
             </div>
           </div>
           <div class="status-section">
@@ -149,11 +149,11 @@ async function loadProjects() {
               </div>
               <div class="info-item">
                 <span class="info-label">Start date:</span>
-                <span class="info-value">${new Date(p.start_date).toLocaleDateString()}</span>
+                <span class="info-value">${new Date(p.start_date + 'T00:00:00').toLocaleDateString()}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">End date:</span>
-                <span class="info-value">${new Date(p.end_date).toLocaleDateString()}</span>
+                <span class="info-value">${new Date(p.end_date + 'T00:00:00').toLocaleDateString()}</span>
               </div>
             </div>
           </div>

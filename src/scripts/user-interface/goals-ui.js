@@ -119,7 +119,7 @@ async function loadGoals() {
         </div>
       </div>
       <div class="goal-footer">
-        <div class="goal-deadline">Deadline: ${new Date(goal.deadline).toLocaleDateString()}</div>
+        <div class="goal-deadline">Deadline: ${new Date(goal.deadline + 'T00:00:00').toLocaleDateString()}</div>
         <div class="goal-actions">
           <button class="btn-action edit-goal">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

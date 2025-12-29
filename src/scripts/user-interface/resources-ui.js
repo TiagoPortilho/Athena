@@ -26,7 +26,9 @@ async function loadResources() {
       card.className = "col-md-4";
       card.innerHTML = `
         <div class="resource-card">
-          ${r.image ? `<img src="${r.image}" class="resource-image" alt="Resource Image" onerror="this.style.display='none';"/>` : ""}
+          <div class="resource-image-container">
+            ${r.image ? `<img src="${r.image}" class="resource-image" alt="Resource Image" onerror="this.style.display='none';"/>` : `<div class="resource-image-placeholder"></div>`}
+          </div>
           <div class="resource-title">${r.title}</div>
           <div class="resource-description">${r.description || ""}</div>
           ${r.link ? `<a href="${r.link}" class="resource-link" target="_blank">${r.link}</a>` : ""}

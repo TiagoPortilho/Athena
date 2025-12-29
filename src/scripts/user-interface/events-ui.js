@@ -35,7 +35,7 @@ async function loadEvents() {
           <div>
             <div class="event-title">${event.title}</div>
             <div class="event-info">
-              <span>Date: ${new Date(event.date).toLocaleDateString()}</span>
+              <span>Date: ${new Date(event.date + 'T00:00:00').toLocaleDateString()}</span>
               ${event.description ? `<span class="text-muted">•</span><span class="event-description">${event.description}</span>` : ''}
             </div>
           </div>

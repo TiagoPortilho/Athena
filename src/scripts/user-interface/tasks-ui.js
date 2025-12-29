@@ -42,7 +42,7 @@ async function loadTasks() {
         <div>
           <div class="task-desc ${t.done ? "task-done" : ""}">${t.description}</div>
           <div class="task-date text-muted">
-            Due: ${t.due_date ? new Date(t.due_date).toLocaleDateString() : "-"} 
+            Due: ${t.due_date ? new Date(t.due_date + 'T00:00:00').toLocaleDateString() : "-"} 
             <span class="ms-2 badge">${daysLeft(t.due_date)}</span>
           </div>
         </div>

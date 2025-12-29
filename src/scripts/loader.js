@@ -35,7 +35,7 @@ async function loadRecentProjects() {
           <img src="https://c.animaapp.com/maelovkf66QMPN/img/folder-filled.svg" class="inbox-icon" />
           <div class="ms-2">
             <div class="project-name">${project.title}</div>
-            <div class="project-date">${new Date(project.end_date).toLocaleDateString()}</div>
+            <div class="project-date">${new Date(project.end_date + 'T00:00:00').toLocaleDateString()}</div>
           </div>
         </div>
         <div class="project-status ${project.status.toLowerCase().replace(' ', '-')}">${project.status}</div>
@@ -79,7 +79,7 @@ async function loadRecentTasks() {
           <input type="checkbox" class="form-check-input task-check" ${task.done ? "checked" : ""} data-task-id="${task.id}" />
           <div class="project-info">
             <div class="project-name ${task.done ? "task-done" : ""}">${task.description}</div>
-            <div class="project-date">Due: ${task.due_date ? new Date(task.due_date).toLocaleDateString() : 'No date'}</div>
+            <div class="project-date">Due: ${task.due_date ? new Date(task.due_date + 'T00:00:00').toLocaleDateString() : 'No date'}</div>
           </div>
         </div>
         <span class="project-status status-task">${getDaysLeft(task.due_date)}</span>
@@ -141,7 +141,7 @@ async function loadRecentEvents() {
           <div class="d-flex flex-column">
             <div class="project-name">${event.title}</div>
             <div class="d-flex align-items-center gap-2">
-              <span class="project-date">${new Date(event.date).toLocaleDateString()}</span>
+              <span class="project-date">${new Date(event.date + 'T00:00:00').toLocaleDateString()}</span>
               ${event.description ? `<span class="text-muted">•</span><span class="project-date text-truncate" style="max-width: 200px;">${event.description}</span>` : ''}
             </div>
           </div>

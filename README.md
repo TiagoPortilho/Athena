@@ -8,6 +8,7 @@
   <em>A personal knowledge management desktop application built with Electron and SQLite.</em>
 </p>
 
+# App Demonstration
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9cfb9a5d-459e-4b81-b99e-f517b33d810c" alt="Athena Preview">
 </p>
@@ -104,6 +105,7 @@ This project is licensed under the [CC BY-NC-ND 4.0](https://creativecommons.org
   <em>Um aplicativo desktop de gerenciamento de conhecimento pessoal construído com Electron e SQLite.</em>
 </p>
 
+# Demonstração do Aplicativo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9cfb9a5d-459e-4b81-b99e-f517b33d810c" alt="Athena Preview">
 </p>
